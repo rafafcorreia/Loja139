@@ -27,15 +27,15 @@ public class AdicionarProdutoNoCarrinhoTest
     driver.Quit();
   }
   [Test]
-  [TestCase("standard_user")]
-  [TestCase("locked_out_user")]
-  public void selecionarProdutoWebDriver(String username)
+  [TestCase("standard_user", "secret_sauce", "Products")]
+  [TestCase("problem_user", "secret_sauce", "Products")]
+  public void selecionarProdutoWebDriver(String username, String password, String resultadoEsperado)
   {
     driver.Navigate().GoToUrl("https://www.saucedemo.com/");
     driver.FindElement(By.Id("user-name")).SendKeys(username);
-    driver.FindElement(By.Name("password")).SendKeys("secret_sauce");
+    driver.FindElement(By.Name("password")).SendKeys(password);
     driver.FindElement(By.CssSelector("input.submit-button.btn_action")).Click();
-    Assert.That(driver.FindElement(By.CssSelector("span.title")).Text, Is.EqualTo("Products"));
+    Assert.That(driver.FindElement(By.CssSelector("span.title")).Text, Is.EqualTo(resultadoEsperado));
     Thread.Sleep(2000);
   }
 

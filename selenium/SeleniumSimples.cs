@@ -18,7 +18,7 @@ public class AdicionarProdutoNoCarrinhoTest
   {
     new DriverManager().SetUpDriver(new ChromeConfig()); // Configuração do WebDriverManager
     driver = new ChromeDriver();
-    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10000);
+    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
     driver.Manage().Window.Maximize();
   }
   [TearDown]
@@ -51,7 +51,7 @@ public class AdicionarProdutoNoCarrinhoTest
         var line = reader.ReadLine();
         var values = line.Split(",");
 
-        yield return new TestCaseData(int.Parse(values[0]), int.Parse(values[1]), int.Parse(values[2]));
+        yield return new TestCaseData(values[0]);
       }
     }
 

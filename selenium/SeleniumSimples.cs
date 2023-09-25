@@ -18,7 +18,7 @@ public class AdicionarProdutoNoCarrinhoTest
   {
     new DriverManager().SetUpDriver(new ChromeConfig()); // Configuração do WebDriverManager
     driver = new ChromeDriver();
-    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(1000);
+    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10000);
     driver.Manage().Window.Maximize();
   }
   [TearDown]
@@ -51,20 +51,20 @@ public class AdicionarProdutoNoCarrinhoTest
         var line = reader.ReadLine();
         var values = line.Split(",");
 
-        yield return new TestCaseData(values[0]);
+        yield return new TestCaseData(values[0], values[1], values[2]);
       }
     }
 
   }
 
   [Test, TestCaseSource("getTestData")]
-  public void testMassa(String username)
+  public void testMassa(String username, String password, String resultadoEsperado)
   {
     driver.Navigate().GoToUrl("https://www.saucedemo.com/");
     driver.FindElement(By.Id("user-name")).SendKeys(username);
-    driver.FindElement(By.Name("password")).SendKeys("secret_sauce");
+    driver.FindElement(By.Name("password")).SendKeys(password);
     driver.FindElement(By.CssSelector("input.submit-button.btn_action")).Click();
-    Assert.That(driver.FindElement(By.CssSelector("span.title")).Text, Is.EqualTo("Products"));
+    Assert.That(driver.FindElement(By.CssSelector("span.title")).Text, Is.EqualTo(resultadoEsperado));
     Thread.Sleep(2000);
   }
 

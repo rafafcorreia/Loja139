@@ -58,7 +58,7 @@ public class AdicionarProdutoNoCarrinhoTest
   }
 
   [Test, TestCaseSource("getTestData")]
-  public void testSomarMassa(String username)
+  public void testMassa(String username)
   {
     driver.Navigate().GoToUrl("https://www.saucedemo.com/");
     driver.FindElement(By.Id("user-name")).SendKeys(username);

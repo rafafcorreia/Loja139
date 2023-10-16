@@ -18,7 +18,7 @@ public class PetTest
         var response = client.Execute(request);
         var responseBody = JsonConvert.DeserializeObject<dynamic>(response.Content);
 
-        Assert.That(((int)response.StatusCode), Is.EqualTo(200));
+        Assert.That((int)response.StatusCode, Is.EqualTo(200));
 
         String status = responseBody.status.ToString();
         Assert.That(status, Is.EqualTo("available"));
@@ -65,7 +65,7 @@ public class PetTest
 
         Console.WriteLine(responseBody);
 
-        Assert.That(((int)response.StatusCode), Is.EqualTo(200));
+        Assert.That((int)response.StatusCode, Is.EqualTo(200));
         Assert.That(responseBody.status.ToString(), Is.EqualTo("unavaiable"));
     }
 

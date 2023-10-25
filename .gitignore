@@ -6,6 +6,9 @@
 *.user
 *.sln.docstates
 *.sln
+.config
+*.html
+*.feature.cs
 
 # Build results
 

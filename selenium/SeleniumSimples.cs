@@ -39,7 +39,7 @@ public class AdicionarProdutoNoCarrinhoTest
     Thread.Sleep(2000);
   }
 
-  public static IEnumerable<TestCaseData> getTestData()
+  public static IEnumerable<TestCaseData> lerDadosDeTeste()
   {
     using (var reader = new StreamReader(@"C:\testspace\Loja139\fixtures\massa.csv"))
     {
@@ -57,7 +57,7 @@ public class AdicionarProdutoNoCarrinhoTest
 
   }
 
-  [Test, TestCaseSource("getTestData")]
+  [Test, TestCaseSource("lerDadosDeTeste")]
   public void testMassa(String username, String password, String resultadoEsperado)
   {
     driver.Navigate().GoToUrl("https://www.saucedemo.com/");

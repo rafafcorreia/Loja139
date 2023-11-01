@@ -2,6 +2,7 @@ using AngleSharp.Common;
 using AngleSharp.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using TechTalk.SpecFlow;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
@@ -74,6 +75,8 @@ namespace StepDefinitions
         [Then(@"show page's title ""(.*)""")]
         public void ThenShowPagesTitle(string pageTitle)
         {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromMilliseconds(3000));
+            wait.Until(d => driver.FindElement(By.CssSelector("span.title")).Displayed);
             Assert.That(driver.FindElement(By.CssSelector("span.title")).Text, Is.EqualTo(pageTitle));
         }
 

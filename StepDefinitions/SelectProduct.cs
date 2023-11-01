@@ -1,11 +1,12 @@
-using System;
+using AngleSharp.Common;
+using AngleSharp.Text;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using TechTalk.SpecFlow;
 using WebDriverManager;
 using WebDriverManager.DriverConfigs.Impl;
 
-namespace MyNamespace
+namespace StepDefinitions
 {
     [Binding]
     public class SelectProduct
@@ -18,7 +19,7 @@ namespace MyNamespace
             _scenarioContext = scenarioContext;
         }
 
-        [BeforeScenario]
+        [BeforeScenario, Scope(Tag = "simples")]
         public void SetUp()
         {
             new DriverManager().SetUpDriver(new ChromeConfig()); // Configuração do WebDriverManager
@@ -26,7 +27,7 @@ namespace MyNamespace
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10000);
             driver.Manage().Window.Maximize();
         }
-        [AfterScenario]
+        [AfterScenario, Scope(Tag = "simples")]
         public void TearDown()
         {
             driver.Quit();
@@ -49,7 +50,6 @@ namespace MyNamespace
         public void WhenIClickInLogin()
         {
             driver.FindElement(By.CssSelector("input.submit-button.btn_action")).Click();
-            
         }
 
         [When(@"I click in product ""(.*)""")]

@@ -49,15 +49,3 @@
 
 * Para gerar o relatório de execução dos testes, utilize o seguinte comando ajustando os apontamentos:
 `dotnet livingdoc feature-folder C:\testspace\Loja139 -t C:\testspace\Loja139\bin\Debug\net7.0\TestExecution.json`
-
-```
-String productSelector = "add-to-cart";
-String produto = "Sauce Labs Backpack";
-produto = produto.ToLower();
-String[] arrayApoio = produto.SplitSpaces();
-foreach (var palavra in arrayApoio)
-{
-         productSelector = productSelector + "-" + palavra;
-}
-Console.WriteLine(productSelector);
-```

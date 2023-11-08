@@ -8,10 +8,7 @@ namespace Pages
         private IWebElement PrecoProduto => driver.FindElement(By.CssSelector("div.inventory_item_price"));
         private IWebElement QuantidadeProduto => driver.FindElement(By.CssSelector("div.cart_quantity"));
 
-        public CartPage(IWebDriver driver) : base(driver)
-        {
-
-        }
+        public CartPage(IWebDriver driver) : base(driver) { }
 
         public String LerTituloProduto()
         {

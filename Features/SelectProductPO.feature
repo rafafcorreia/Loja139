@@ -1,6 +1,7 @@
 Feature: Select Product in Store PO
+
   @PO
-  Scenario Outline: Selecting Product with Success PO <user>
+  Scenario Outline: Selecting Product with Success PO
     Given I access SauceDemo store PO
     When I filled a user <user> and password <password> PO
     And I click in Login PO

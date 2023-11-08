@@ -18,20 +18,7 @@ namespace StepDefinitions
         public SelectProduct(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-        }
-
-        [BeforeScenario, Scope(Tag = "simples")]
-        public void SetUp()
-        {
-            new DriverManager().SetUpDriver(new ChromeConfig()); // Configuração do WebDriverManager
-            driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(10000);
-            driver.Manage().Window.Maximize();
-        }
-        [AfterScenario, Scope(Tag = "simples")]
-        public void TearDown()
-        {
-            driver.Quit();
+            driver = (IWebDriver)_scenarioContext["driver"];
         }
 
         [Given(@"I access SauceDemo store")]

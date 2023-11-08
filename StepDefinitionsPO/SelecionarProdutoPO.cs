@@ -22,21 +22,7 @@ namespace StepDefinitionsPO
         public SelectProductPO(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-        }
-
-        [BeforeScenario, Scope(Tag = "PO")]
-        public void SetUp()
-        {
-            new DriverManager().SetUpDriver(new ChromeConfig()); // Configuração do WebDriverManager
-            driver = new ChromeDriver();
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromMilliseconds(5000);
-            driver.Manage().Window.Maximize();
-            
-        }
-        [AfterScenario, Scope(Tag = "PO")]
-        public void TearDown()
-        {
-            driver.Quit();
+            driver = (IWebDriver) _scenarioContext["driver"];
         }
 
         [Given(@"I access SauceDemo store PO")]
